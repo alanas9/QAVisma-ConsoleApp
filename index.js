@@ -228,9 +228,25 @@ const exit = () => {
 const assignAllGifts = () => {
   const gifts = Gift.all;
   const children = Child.all;
-  for (let i = 0; i < gifts.length; i++) {
-    const gift = gifts[i];
-    const child = children[i];
+  
+  const availableGifts = gifts.filter((gift) => !gift.assignedTo);
+  const availableChildren = children.filter((child) => !child.assignedGift);
+
+  if (availableGifts.length < availableChildren.length) {
+    console.log(
+      chalk.red(
+        `There are ${chalk.bold(
+          children.length - gifts.length
+        )} more children than gifts. Please add more gifts.`
+      )
+    );
+    goBackToInitialStep();
+    return;
+  }
+
+  for (let i = 0; i < availableGifts.length; i++) {
+    const gift = availableGifts[i];
+    const child = availableChildren[i];
     assignGiftToChildren(gift, child);
   }
 
