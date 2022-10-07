@@ -10,8 +10,8 @@ ___
 
 ## Install App
 ___
-- ```git clone GIT_LINKAS``` - pull code from repository
-- ```npm install``` - install required packages
+- ```git clone https://github.com/alanas9/QAVisma-ConsoleApp.git``` - pull code from repository
+- ```npm install --legacy-peer-deps``` - install required packages
 
 ## Usage
 ___
