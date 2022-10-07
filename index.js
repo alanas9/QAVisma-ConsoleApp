@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-// import all packages installed in node moudles
 import chalk from "chalk";
 import inquirer from "inquirer";
 import gradient from "gradient-string";
@@ -106,7 +105,7 @@ export const goBackToInitialStep = () => {
 };
 
 const addChild = () => {
-  // use inquirer to get input for child name
+
   inquirer
     .prompt([
       {
@@ -117,7 +116,7 @@ const addChild = () => {
     ])
     .then((answer) => {
 
-      // validate if child name is already existing. Take into account that child name is nit case sensitive and name first letter capital
+      
       const childName = answer.childName.toLowerCase().replace(/^\w/, (c) =>
         c.toUpperCase()
       );
@@ -140,30 +139,9 @@ const addChild = () => {
         goBackToInitialStep();
       }
     });
-
-  // validate if child name is already existing. Take into account that child name is not case sensitive
-  /*   if (Child.all.includes(answer.childName)) {
-       console.log(`Child with name ${answer.childName} already exists`);
-       return;
-     }
-// first capital letter of child name
-     const childName = answer.childName
-       .split(" ")
-       .map((word) => word[0].toUpperCase() + word.slice(1))
-       .join(" ");
-     new Child(answer.childName);
-     // add console.log
-     console.log(`Child ${answer.childName} added`);
-   })
-   .finally(() => {
-     console.log(Child.all);
-     initialStep();
-   });
-   */
 };
 
 const addGift = () => {
-  // use inquirer to get input for gift name
   inquirer
     .prompt([
       {
@@ -173,13 +151,11 @@ const addGift = () => {
       },
     ])
     .then((answer) => {
-      // gifts.push(answer.giftName);
       new Gift(answer.giftName);
       console.log(`Gift ${answer.giftName} added`);
     })
     .finally(() => {
       initialStep();
-      // new Gift(gift)
     });
 };
 
@@ -189,7 +165,6 @@ const showGifts = () => {
 };
 
 const assignGift = () => {
-  // select gift and select child
   inquirer
     .prompt([
       {
@@ -218,7 +193,6 @@ const assignGift = () => {
       },
     ])
     .then((answers) => {
-      // assign child to gift
       const gift = Gift.all.find((gift) => gift.name === answers.gift);
       const child = Child.all.find((child) => child.name === answers.child);
 
@@ -234,13 +208,9 @@ const showChildren = () => {
   goBackToInitialStep();
 };
 
-// randomly assign a gift to a childs
 const randomAssignGift = () => {
-  // get a random gift
   const randomGift = Gift.all[Math.floor(Math.random() * Gift.all.length)];
-  // get a random child
   const randomChild = Child.all[Math.floor(Math.random() * Child.all.length)];
-  // assign gift to child
   assignGiftToChildren(randomGift, randomChild);
 
   goBackToInitialStep();
@@ -253,17 +223,11 @@ const exit = () => {
     process.exit();
   }, 2500);
 
-  // setTimeout(() => {
-  //   .karaoke.start(); // Animation resumes
-  // }, 2000);
 };
 
 const assignAllGifts = () => {
-  // get all gifts
   const gifts = Gift.all;
-  // get all children
   const children = Child.all;
-  // assign gifts to children
   for (let i = 0; i < gifts.length; i++) {
     const gift = gifts[i];
     const child = children[i];

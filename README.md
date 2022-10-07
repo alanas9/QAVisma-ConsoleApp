@@ -33,6 +33,6 @@ ___
 2. **Add a gift** —  *Write a gift name and added to the gifts list*
 3. **Add a child** —  *Write a child name and added to the child list, names cannot be repeated*
 4. **Assign gift** —  *Select a gift then select a child which selected gift will be assigned*
-5.  — **Randomly assign a gift to child** —  *Random gift assigned to random child*
+5.   **Randomly assign a gift to child** —  *Random gift assigned to random child*
 6. **Assign all gifts at once** —  *Assign all gifts at once to all childs*
 7. **Exit** —  *Close application*
